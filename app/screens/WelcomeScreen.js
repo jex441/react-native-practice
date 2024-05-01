@@ -5,7 +5,6 @@ import {
 	SafeAreaView,
 	Image,
 	ImageBackground,
-	Button,
 } from "react-native";
 
 export default function Welcome() {
