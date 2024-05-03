@@ -6,7 +6,7 @@ import {
 	Image,
 	ImageBackground,
 } from "react-native";
-
+import AppButton from "../components/AppButton";
 import colors from "../config/colors";
 
 export default function Welcome() {
@@ -30,17 +30,9 @@ export default function Welcome() {
 						source={require("../assets/logo-red.png")}
 					/>
 					<Text style={{ marginTop: 10 }}>Sell what you don't need.</Text>
+					<AppButton title="Login" />
+					<AppButton title="Sign Up" color="secondary" />
 				</SafeAreaView>
-				<View
-					style={{ height: 70, width: "100%", backgroundColor: colors.primary }}
-				></View>
-				<View
-					style={{
-						height: 70,
-						width: "100%",
-						backgroundColor: colors.secondary,
-					}}
-				></View>
 			</ImageBackground>
 		</View>
 	);
@@ -49,8 +41,8 @@ export default function Welcome() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		justifyContent: "center",
-		alignItems: "center",
-		justifyContent: "start",
+		width: "100%",
+		alignItems: "flex-end",
+		justifyContent: "flex-end",
 	},
 });

@@ -1,11 +1,11 @@
-import { View, Text } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 
 import colors from "../config/colors";
 
-export default function Item({ pressHandler, color, title }) {
+export default function AppButton({ pressHandler, color = "primary", title }) {
 	return (
-		<View
-			onPress={() => pressHandler}
+		<TouchableOpacity
+			onPress={pressHandler}
 			style={{
 				backgroundColor: colors[color],
 				display: "flex",
@@ -28,6 +28,6 @@ export default function Item({ pressHandler, color, title }) {
 			>
 				{title}
 			</Text>
-		</View>
+		</TouchableOpacity>
 	);
 }
