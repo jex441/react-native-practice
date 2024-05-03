@@ -1,5 +1,7 @@
 import { View, StyleSheet, SafeAreaView, Image } from "react-native";
 
+import colors from "../config/colors";
+
 export default function Item() {
 	return (
 		<SafeAreaView style={styles.container}>
@@ -14,9 +16,11 @@ export default function Item() {
 				}}
 			>
 				<View
-					style={{ height: 60, width: 55, backgroundColor: "tomato" }}
+					style={{ height: 60, width: 55, backgroundColor: colors.primary }}
 				></View>
-				<View style={{ height: 60, width: 55, backgroundColor: "cyan" }}></View>
+				<View
+					style={{ height: 60, width: 55, backgroundColor: colors.secondary }}
+				></View>
 			</View>
 			<Image
 				style={{ marginTop: 60, width: 430, height: 600 }}

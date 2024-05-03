@@ -7,6 +7,8 @@ import {
 	ImageBackground,
 } from "react-native";
 
+import colors from "../config/colors";
+
 export default function Welcome() {
 	return (
 		<View style={styles.container}>
@@ -24,16 +26,20 @@ export default function Welcome() {
 					}}
 				>
 					<Image
-						style={{ marginTop: 40, width: 90, height: 90 }}
+						style={{ marginTop: 40, width: 100, height: 100 }}
 						source={require("../assets/logo-red.png")}
 					/>
 					<Text style={{ marginTop: 10 }}>Sell what you don't need.</Text>
 				</SafeAreaView>
 				<View
-					style={{ height: 70, width: "100%", backgroundColor: "tomato" }}
+					style={{ height: 70, width: "100%", backgroundColor: colors.primary }}
 				></View>
 				<View
-					style={{ height: 70, width: "100%", backgroundColor: "cyan" }}
+					style={{
+						height: 70,
+						width: "100%",
+						backgroundColor: colors.secondary,
+					}}
 				></View>
 			</ImageBackground>
 		</View>
