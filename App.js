@@ -1,10 +1,19 @@
 import { View, Text, StyleSheet } from "react-native";
 import Welcome from "./app/screens/WelcomeScreen";
 import Item from "./app/screens/ItemScreen";
+import AppCard from "./app/components/AppCard";
+import ListingDetails from "./app/screens/ListingDetails";
 export default function App() {
 	return (
 		<View style={styles.container}>
-			<Welcome />
+			{/* <Welcome /> */}
+			{/* <AppCard
+				title="Chair"
+				subtitle="$100"
+				source={require("./app/assets/chair.jpg")}
+			/> */}
+			<Item />
+			{/* <ListingDetails /> */}
 		</View>
 	);
 }
@@ -15,6 +24,6 @@ const styles = StyleSheet.create({
 		width: "100%",
 		justifyContent: "center",
 		alignItems: "center",
-		backgroundColor: "#FFF",
+		backgroundColor: "#F9F9F9",
 	},
 });

@@ -26,7 +26,14 @@ export default function Welcome() {
 					style={{ position: "absolute", top: 100, width: 100, height: 100 }}
 					source={require("../assets/logo-red.png")}
 				/>
-				<Text style={{ position: "absolute", top: 200, marginTop: 10 }}>
+				<Text
+					style={{
+						position: "absolute",
+						fontSize: 25,
+						top: 200,
+						marginTop: 10,
+					}}
+				>
 					Sell what you don't need.
 				</Text>
 				<AppButton title="Login" />

@@ -10,7 +10,7 @@ export default function AppButton({ pressHandler, color = "primary", title }) {
 				backgroundColor: colors[color],
 				display: "flex",
 				height: 50,
-				margin: 5,
+				marginVertical: 10,
 				width: "90%",
 				paddingHorizontal: 10,
 				flexDirection: "row",

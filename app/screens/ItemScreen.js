@@ -1,4 +1,5 @@
 import { View, StyleSheet, SafeAreaView, Image } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import colors from "../config/colors";
 
@@ -15,12 +16,16 @@ export default function Item() {
 					justifyContent: "space-between",
 				}}
 			>
-				<View
-					style={{ height: 60, width: 55, backgroundColor: colors.primary }}
-				></View>
-				<View
-					style={{ height: 60, width: 55, backgroundColor: colors.secondary }}
-				></View>
+				<View>
+					<MaterialCommunityIcons name="close" color="#fff" size={30} />
+				</View>
+				<View>
+					<MaterialCommunityIcons
+						name="trash-can-outline"
+						color="#fff"
+						size={35}
+					/>
+				</View>
 			</View>
 			<Image
 				style={{ marginTop: 60, width: 430, height: 600 }}
