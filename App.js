@@ -1,4 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+
 import Welcome from "./app/screens/WelcomeScreen";
 import Item from "./app/screens/ItemScreen";
 import AppCard from "./app/components/AppCard";
@@ -6,7 +8,7 @@ import ListingDetails from "./app/screens/ListingDetails";
 import Messages from "./app/screens/Messages";
 export default function App() {
 	return (
-		<View style={styles.container}>
+		<GestureHandlerRootView style={styles.container}>
 			{/* <Welcome /> */}
 			{/* <AppCard
 				title="Chair"
@@ -16,7 +18,7 @@ export default function App() {
 			{/* <Item /> */}
 			{/* <ListingDetails /> */}
 			<Messages />
-		</View>
+		</GestureHandlerRootView>
 	);
 }
 

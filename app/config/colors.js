@@ -3,4 +3,5 @@ export default {
 	secondary: "#4ecdc4",
 	medium: "#6e6969",
 	light: "#ccc",
+	danger: "#ff5252",
 };

@@ -47,6 +47,9 @@ function Messages(props) {
 						title={item.title}
 						subtitle={item.description}
 						source={item.image}
+						renderRightActions={() => (
+							<View style={{ backgroundColor: "red", width: 200 }}></View>
+						)}
 						pressHandler={() => console.log("message selected", item)}
 					/>
 				)}

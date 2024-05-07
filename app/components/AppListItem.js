@@ -5,7 +5,7 @@ import {
 	TouchableHighlight,
 	StyleSheet,
 } from "react-native";
-
+import { Swipeable } from "react-native-gesture-handler";
 import colors from "../config/colors";
 
 export default function AppListItem({
@@ -13,24 +13,27 @@ export default function AppListItem({
 	subtitle,
 	source = "../assets/chair.jpg",
 	pressHandler,
+	renderRightActions,
 }) {
 	return (
-		<TouchableHighlight onPress={pressHandler} underlayColor={colors.light}>
-			<View style={styles.card}>
-				<Image
-					style={{
-						width: 70,
-						height: 70,
-						borderRadius: 35,
-					}}
-					source={source}
-				/>
-				<View style={styles.text}>
-					<Text style={styles.title}>{title}</Text>
-					<Text style={styles.subtitle}>{subtitle}</Text>
+		<Swipeable renderRightActions={renderRightActions}>
+			<TouchableHighlight onPress={pressHandler} underlayColor={colors.light}>
+				<View style={styles.card}>
+					<Image
+						style={{
+							width: 70,
+							height: 70,
+							borderRadius: 35,
+						}}
+						source={source}
+					/>
+					<View style={styles.text}>
+						<Text style={styles.title}>{title}</Text>
+						<Text style={styles.subtitle}>{subtitle}</Text>
+					</View>
 				</View>
-			</View>
-		</TouchableHighlight>
+			</TouchableHighlight>
+		</Swipeable>
 	);
 }
 
