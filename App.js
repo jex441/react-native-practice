@@ -3,6 +3,7 @@ import Welcome from "./app/screens/WelcomeScreen";
 import Item from "./app/screens/ItemScreen";
 import AppCard from "./app/components/AppCard";
 import ListingDetails from "./app/screens/ListingDetails";
+import Messages from "./app/screens/Messages";
 export default function App() {
 	return (
 		<View style={styles.container}>
@@ -12,8 +13,9 @@ export default function App() {
 				subtitle="$100"
 				source={require("./app/assets/chair.jpg")}
 			/> */}
-			<Item />
+			{/* <Item /> */}
 			{/* <ListingDetails /> */}
+			<Messages />
 		</View>
 	);
 }

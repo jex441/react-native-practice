@@ -1,4 +1,10 @@
-import { Text, Image, View, TouchableOpacity, StyleSheet } from "react-native";
+import {
+	Text,
+	Image,
+	View,
+	TouchableHighlight,
+	StyleSheet,
+} from "react-native";
 
 import colors from "../config/colors";
 
@@ -9,20 +15,22 @@ export default function AppListItem({
 	pressHandler,
 }) {
 	return (
-		<TouchableOpacity onPress={pressHandler} style={styles.card}>
-			<Image
-				style={{
-					width: 70,
-					height: 70,
-					borderRadius: 35,
-				}}
-				source={source}
-			/>
-			<View style={styles.text}>
-				<Text style={styles.title}>{title}</Text>
-				<Text style={styles.subtitle}>{subtitle}</Text>
+		<TouchableHighlight onPress={pressHandler} underlayColor={colors.light}>
+			<View style={styles.card}>
+				<Image
+					style={{
+						width: 70,
+						height: 70,
+						borderRadius: 35,
+					}}
+					source={source}
+				/>
+				<View style={styles.text}>
+					<Text style={styles.title}>{title}</Text>
+					<Text style={styles.subtitle}>{subtitle}</Text>
+				</View>
 			</View>
-		</TouchableOpacity>
+		</TouchableHighlight>
 	);
 }
 
