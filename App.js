@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Switch } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-
+import { useState } from "react";
 import Welcome from "./app/screens/WelcomeScreen";
 import Item from "./app/screens/ItemScreen";
 import AppCard from "./app/components/AppCard";
@@ -8,7 +8,11 @@ import ListingDetails from "./app/screens/ListingDetails";
 import Messages from "./app/screens/Messages";
 import Account from "./app/screens/Account";
 import Listings from "./app/screens/Listings";
+import AppInputText from "./app/components/AppInputText";
+import Screen from "./app/components/Screen";
+import AppPicker from "./app/components/AppPicker";
 export default function App() {
+	const [isNew, setIsNew] = useState(false);
 	return (
 		<GestureHandlerRootView style={styles.container}>
 			{/* <Welcome /> */}
@@ -21,7 +25,17 @@ export default function App() {
 			{/* <ListingDetails /> */}
 			{/* <Messages /> */}
 			{/* <Account /> */}
-			<Listings />
+			{/* <Listings /> */}
+			{/* <AppInputText icon="email" placeholder="Email" /> */}
+			{/* <Screen>
+				<Switch
+					value={isNew}
+					onValueChange={(newValue) => {
+						setIsNew(newValue);
+					}}
+				/>
+			</Screen> */}
+			<AppPicker icon="email" placeholder="Email" />
 		</GestureHandlerRootView>
 	);
 }
