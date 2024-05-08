@@ -1,10 +1,11 @@
 import { View, StyleSheet, SafeAreaView, Image, FlatList } from "react-native";
+import React, { useEffect, useState } from "react";
 
 import colors from "../config/colors";
 import Screen from "../components/Screen";
 import AppCard from "../components/AppCard";
 
-const data = [
+const initialData = [
 	{
 		id: 1,
 		name: "Red Jacket for sale",
@@ -19,6 +20,22 @@ const data = [
 	},
 ];
 export default function Listings() {
+	const [refreshing, setRefreshing] = useState(false);
+	const [data, setData] = useState(initialData);
+	useEffect(() => {
+		if (refreshing) {
+			setData([
+				{
+					id: 2,
+					name: "Red Jacket for sale",
+					price: "$100",
+					source: "../assets/chair.jpg",
+				},
+			]);
+		}
+		setRefreshing(false);
+	}, [refreshing]);
+
 	return (
 		<Screen>
 			<FlatList
@@ -27,6 +44,10 @@ export default function Listings() {
 				renderItem={({ item }) => (
 					<AppCard title={item.name} subtitle={item.price} />
 				)}
+				refreshing={refreshing}
+				onRefresh={() => {
+					setRefreshing(true);
+				}}
 			/>
 		</Screen>
 	);
