@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import AppListItem from "../components/AppListItem";
 import Screen from "../components/Screen";
@@ -39,6 +39,7 @@ const initialMessages = [
 
 function Messages(props) {
 	const [messages, setMessages] = useState(initialMessages);
+	const [refreshing, setRefreshing] = useState(false);
 
 	const handleDelete = (message) => {
 		const newMessages = messages.filter((msg) => msg.title !== message.title);
@@ -46,6 +47,19 @@ function Messages(props) {
 		setMessages(newMessages);
 	};
 
+	useEffect(() => {
+		if (refreshing) {
+			setMessages([
+				{
+					id: 6,
+					title: "t6",
+					description: "d6",
+					image: require("../assets/logo-red.png"),
+				},
+			]);
+		}
+		setRefreshing(false);
+	}, [refreshing]);
 	return (
 		<Screen>
 			<FlatList
@@ -63,6 +77,10 @@ function Messages(props) {
 					/>
 				)}
 				ItemSeparatorComponent={<ListItemSeparator />}
+				refreshing={refreshing}
+				onRefresh={() => {
+					setRefreshing(true);
+				}}
 			/>
 		</Screen>
 	);
