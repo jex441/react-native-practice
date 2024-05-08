@@ -39,16 +39,17 @@ export default function AppListItem({
 
 const styles = StyleSheet.create({
 	card: {
-		padding: 5,
+		padding: 10,
 		height: 100,
-		margin: 10,
-		width: "90%",
+		marginVertical: 10,
+		width: "100%",
 		flexDirection: "row",
 		justifyContent: "flex-start",
 		alignItems: "flex-start",
+		backgroundColor: "#fff",
 	},
 	text: {
-		marginHorizontal: 10,
+		marginHorizontal: 20,
 		flexDirection: "column",
 		justifyContent: "flex-start",
 	},

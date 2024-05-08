@@ -3,10 +3,10 @@ import { Text, Image, View, TouchableOpacity, StyleSheet } from "react-native";
 import colors from "../config/colors";
 
 export default function AppCard({
-	pressHandler,
-	source = "../assets/chair.jpg",
 	title,
 	subtitle,
+	pressHandler,
+	source = "../assets/chair.jpg",
 }) {
 	return (
 		<TouchableOpacity onPress={pressHandler} style={styles.card}>
@@ -15,7 +15,7 @@ export default function AppCard({
 					width: "100%",
 					height: 200,
 				}}
-				source={source}
+				source={require("../assets/chair.jpg")}
 			/>
 			<View style={{ padding: 20 }}>
 				<Text

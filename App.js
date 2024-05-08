@@ -6,6 +6,8 @@ import Item from "./app/screens/ItemScreen";
 import AppCard from "./app/components/AppCard";
 import ListingDetails from "./app/screens/ListingDetails";
 import Messages from "./app/screens/Messages";
+import Account from "./app/screens/Account";
+import Listings from "./app/screens/Listings";
 export default function App() {
 	return (
 		<GestureHandlerRootView style={styles.container}>
@@ -17,7 +19,9 @@ export default function App() {
 			/> */}
 			{/* <Item /> */}
 			{/* <ListingDetails /> */}
-			<Messages />
+			{/* <Messages /> */}
+			{/* <Account /> */}
+			<Listings />
 		</GestureHandlerRootView>
 	);
 }
