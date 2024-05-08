@@ -11,6 +11,7 @@ import Listings from "./app/screens/Listings";
 import AppInputText from "./app/components/AppInputText";
 import Screen from "./app/components/Screen";
 import AppPicker from "./app/components/AppPicker";
+import Login from "./app/screens/Login";
 export default function App() {
 	const [isNew, setIsNew] = useState(false);
 	return (
@@ -35,7 +36,8 @@ export default function App() {
 					}}
 				/>
 			</Screen> */}
-			<AppPicker icon="email" placeholder="Email" />
+			{/* <AppPicker icon="email" placeholder="Email" /> */}
+			<Login />
 		</GestureHandlerRootView>
 	);
 }

@@ -6,13 +6,18 @@ import {
 	TouchableWithoutFeedback,
 	Button,
 	Modal,
+	FlatList,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../config/colors";
 import defaultStyles from "../config/styles";
 import Screen from "./Screen";
-
-export default function AppPicker({ icon, placeholder, ...otherProps }) {
+import PickerItem from "./PickerItem";
+const data = [
+	{ id: 1, label: "Testing this out" },
+	{ id: 2, label: "List item number two" },
+];
+export default function AppPicker({ icon, placeholder, items }) {
 	const [visible, setVisible] = useState(false);
 
 	return (
@@ -46,6 +51,13 @@ export default function AppPicker({ icon, placeholder, ...otherProps }) {
 			<Modal visible={visible} animationType="slide">
 				<Screen>
 					<Button title="Close" onPress={() => setVisible(!visible)} />
+					<FlatList
+						data={data}
+						keyExtractor={(item) => item.id.toString()}
+						renderItem={({ item }) => (
+							<PickerItem item={item} pressHandler={() => console.log(item)} />
+						)}
+					/>
 				</Screen>
 			</Modal>
 		</>
