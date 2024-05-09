@@ -9,17 +9,15 @@ import {
 	FlatList,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import colors from "../config/colors";
-import defaultStyles from "../config/styles";
-import Screen from "./Screen";
+import { useFormikContext } from "formik";
+import colors from "../../config/colors";
+import defaultStyles from "../../config/styles";
+import Screen from "../Screen";
 import PickerItem from "./PickerItem";
-const data = [
-	{ id: 1, label: "Testing this out" },
-	{ id: 2, label: "List item number two" },
-];
-export default function AppPicker({ icon, placeholder, items }) {
+export default function AppPicker({ icon, data, name }) {
 	const [visible, setVisible] = useState(false);
-
+	const { setFieldValue, values } = useFormikContext();
+	console.log(values);
 	return (
 		<>
 			<TouchableWithoutFeedback onPress={() => setVisible(!visible)}>
@@ -39,7 +37,7 @@ export default function AppPicker({ icon, placeholder, items }) {
 							...defaultStyles.text,
 						}}
 					>
-						{placeholder}
+						{values.category}
 					</Text>
 					<MaterialCommunityIcons
 						name="chevron-down"
@@ -55,7 +53,10 @@ export default function AppPicker({ icon, placeholder, items }) {
 						data={data}
 						keyExtractor={(item) => item.id.toString()}
 						renderItem={({ item }) => (
-							<PickerItem item={item} pressHandler={() => console.log(item)} />
+							<PickerItem
+								item={item}
+								pressHandler={() => setFieldValue("category", item.label)}
+							/>
 						)}
 					/>
 				</Screen>

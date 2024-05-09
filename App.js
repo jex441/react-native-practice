@@ -10,8 +10,10 @@ import Account from "./app/screens/Account";
 import Listings from "./app/screens/Listings";
 import AppInputText from "./app/components/Forms/AppInputText";
 import Screen from "./app/components/Screen";
-import AppPicker from "./app/components/AppPicker";
+import AppPicker from "./app/components/Forms/AppPicker";
 import Login from "./app/screens/Login";
+import Register from "./app/screens/Register";
+import EditListing from "./app/screens/EditListing";
 export default function App() {
 	const [isNew, setIsNew] = useState(false);
 	return (
@@ -37,7 +39,9 @@ export default function App() {
 				/>
 			</Screen> */}
 			{/* <AppPicker icon="email" placeholder="Email" /> */}
-			<Login />
+			{/* <Login /> */}
+			{/* <Register /> */}
+			<EditListing />
 		</GestureHandlerRootView>
 	);
 }
