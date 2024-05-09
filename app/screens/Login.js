@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import React from "react";
+import { StyleSheet, Text, Image } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
 import Screen from "../components/Screen";
 import AppInputText from "../components/AppInputText";
 import AppButton from "../components/AppButton";
+import ErrorText from "../components/ErrorText";
+import AppFormComponent from "../components/AppFormComponent";
 
 const validationSchema = Yup.object().shape({
 	email: Yup.string().required().email().label("Email"),
@@ -20,30 +22,31 @@ export default function Login() {
 				<Formik
 					validationSchema={validationSchema}
 					initialValues={{ email: "", password: "" }}
-					onSubmit={(vals) => console.log(vals)}
 				>
-					{({ handleChange, handleSubmit, errors }) => (
+					{({
+						handleChange,
+						handleSubmit,
+						errors,
+						setFieldTouched,
+						touched,
+					}) => (
 						<>
-							<AppInputText
+							<AppFormComponent
+								name="email"
 								icon="email"
 								autoCapitalize="none"
 								autoCorrect={false}
 								keyboardType="email-address"
 								textContentType="emailAddress"
-								placeholder="email"
-								onChangeText={handleChange("email")}
 							/>
-							<Text>{errors.email}</Text>
-							<AppInputText
+							<AppFormComponent
+								name="password"
 								icon="lock"
 								autoCapitalize="none"
 								autoCorrect={false}
 								textContentType="password"
-								placeholder="password"
 								secureTextEntry
-								onChangeText={handleChange("email")}
 							/>
-							<Text>{errors.password}</Text>
 							<AppButton title="Login" pressHandler={() => handleSubmit()} />
 						</>
 					)}
