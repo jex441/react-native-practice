@@ -8,7 +8,7 @@ import ListingDetails from "./app/screens/ListingDetails";
 import Messages from "./app/screens/Messages";
 import Account from "./app/screens/Account";
 import Listings from "./app/screens/Listings";
-import AppInputText from "./app/components/AppInputText";
+import AppInputText from "./app/components/Forms/AppInputText";
 import Screen from "./app/components/Screen";
 import AppPicker from "./app/components/AppPicker";
 import Login from "./app/screens/Login";
