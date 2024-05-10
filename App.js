@@ -19,14 +19,14 @@ export default function App() {
 	return (
 		<GestureHandlerRootView style={styles.container}>
 			{/* <Welcome /> */}
-			{/* <AppCard
+			<AppCard
 				title="Chair"
 				subtitle="$100"
 				source={require("./app/assets/chair.jpg")}
-			/> */}
+			/>
 			{/* <Item /> */}
 			{/* <ListingDetails /> */}
-			<Messages />
+			{/* <Messages /> */}
 			{/* <Account /> */}
 			{/* <Listings /> */}
 			{/* <AppInputText icon="email" placeholder="Email" /> */}

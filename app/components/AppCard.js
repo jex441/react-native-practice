@@ -19,7 +19,9 @@ export default function AppCard({
 			/>
 			<View style={{ padding: 20 }}>
 				<Text
+					numberOfLines={1}
 					style={{
+						overflow: "hidden",
 						fontWeight: "bold",
 						marginBottom: 8,
 						color: "#000",
@@ -28,7 +30,9 @@ export default function AppCard({
 					{title}
 				</Text>
 				<Text
+					numberOfLines={1}
 					style={{
+						overflow: "hidden",
 						fontWeight: "bold",
 						color: colors.secondary,
 					}}
