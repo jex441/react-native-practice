@@ -55,7 +55,7 @@ export default function AppPicker({ icon, data, name }) {
 						renderItem={({ item }) => (
 							<PickerItem
 								item={item}
-								pressHandler={() => setFieldValue("category", item.label)}
+								pressHandler={() => setFieldValue(name, item.label)}
 							/>
 						)}
 					/>

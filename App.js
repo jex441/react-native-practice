@@ -26,7 +26,7 @@ export default function App() {
 			/> */}
 			{/* <Item /> */}
 			{/* <ListingDetails /> */}
-			{/* <Messages /> */}
+			<Messages />
 			{/* <Account /> */}
 			{/* <Listings /> */}
 			{/* <AppInputText icon="email" placeholder="Email" /> */}
@@ -41,7 +41,7 @@ export default function App() {
 			{/* <AppPicker icon="email" placeholder="Email" /> */}
 			{/* <Login /> */}
 			{/* <Register /> */}
-			<EditListing />
+			{/* <EditListing /> */}
 		</GestureHandlerRootView>
 	);
 }
