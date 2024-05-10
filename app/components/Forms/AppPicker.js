@@ -48,12 +48,9 @@ export default function AppPicker({ icon, data, name, width }) {
 			<Modal visible={visible} animationType="slide">
 				<Screen>
 					<Button title="Close" onPress={() => setVisible(!visible)} />
-					<View
-						style={{
-							width: "100%",
-						}}
-					>
+					<View>
 						<FlatList
+							numColumns={3}
 							data={data}
 							keyExtractor={(item) => item.id.toString()}
 							renderItem={({ item }) => (

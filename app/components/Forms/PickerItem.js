@@ -18,6 +18,8 @@ export default function PickerItem({ item, pressHandler }) {
 }
 const styles = StyleSheet.create({
 	container: {
+		height: 100,
+		width: 100,
 		justifyContent: "center",
 		alignItems: "center",
 		margin: 20,
@@ -31,7 +33,7 @@ const styles = StyleSheet.create({
 		marginBottom: 15,
 	},
 	text: {
-		fontSize: 20,
+		fontSize: 14,
 		color: colors.dark,
 		textAlign: "center",
 	},

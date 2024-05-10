@@ -14,7 +14,7 @@ const validationSchema = Yup.object().shape({
 
 const categories = [
 	{ id: 1, label: "Furniture", color: "#fc5c65", name: "floor-lamp" },
-	{ id: 2, label: "Office Supplies", color: "#fd9644", name: "car" },
+	{ id: 2, label: "Cars", color: "#fd9644", name: "car" },
 	{ id: 3, label: "Cameras", color: "#fed330", name: "camera" },
 	{ id: 4, label: "Games", color: "#26de81", name: "cards" },
 	{ id: 5, label: "Clothing", color: "#2bcbba", name: "shoe-heel" },
