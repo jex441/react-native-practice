@@ -31,8 +31,12 @@ export default function AppListItem({
 							source={source}
 						/>
 						<View style={styles.text}>
-							<Text style={styles.title}>{title}</Text>
-							<Text style={styles.subtitle}>{subtitle}</Text>
+							<Text style={styles.title} numberOfLines={1}>
+								{title}
+							</Text>
+							<Text style={styles.subtitle} numberOfLines={2}>
+								{subtitle}
+							</Text>
 						</View>
 					</View>
 					{chevrons && (
@@ -67,8 +71,16 @@ const styles = StyleSheet.create({
 		justifyContent: "flex-start",
 		alignSelf: "flex-start",
 	},
-	title: { fontWeight: "500", fontSize: 16, marginBottom: 6, color: "#000" },
+	title: {
+		fontWeight: "500",
+		fontSize: 16,
+		marginBottom: 6,
+		color: "#000",
+		overflow: "hidden",
+		maxWidth: 250,
+	},
 	subtitle: {
+		maxWidth: 250,
 		fontSize: 14,
 		color: colors.medium,
 	},
