@@ -14,14 +14,13 @@ import colors from "../../config/colors";
 import defaultStyles from "../../config/styles";
 import Screen from "../Screen";
 import PickerItem from "./PickerItem";
-export default function AppPicker({ icon, data, name }) {
+export default function AppPicker({ icon, data, name, width }) {
 	const [visible, setVisible] = useState(false);
 	const { setFieldValue, values } = useFormikContext();
-	console.log(values);
 	return (
 		<>
 			<TouchableWithoutFeedback onPress={() => setVisible(!visible)}>
-				<View style={styles.container}>
+				<View style={{ ...styles.container, width: width || "100%" }}>
 					{icon && (
 						<MaterialCommunityIcons
 							name={icon}
@@ -33,11 +32,11 @@ export default function AppPicker({ icon, data, name }) {
 						style={{
 							flex: 1,
 							marginLeft: 15,
-							color: colors.dark,
 							...defaultStyles.text,
+							color: values.category ? colors.dark : colors.medium,
 						}}
 					>
-						{values.category}
+						{values.category || "Category"}
 					</Text>
 					<MaterialCommunityIcons
 						name="chevron-down"
@@ -49,16 +48,22 @@ export default function AppPicker({ icon, data, name }) {
 			<Modal visible={visible} animationType="slide">
 				<Screen>
 					<Button title="Close" onPress={() => setVisible(!visible)} />
-					<FlatList
-						data={data}
-						keyExtractor={(item) => item.id.toString()}
-						renderItem={({ item }) => (
-							<PickerItem
-								item={item}
-								pressHandler={() => setFieldValue(name, item.label)}
-							/>
-						)}
-					/>
+					<View
+						style={{
+							width: "100%",
+						}}
+					>
+						<FlatList
+							data={data}
+							keyExtractor={(item) => item.id.toString()}
+							renderItem={({ item }) => (
+								<PickerItem
+									item={item}
+									pressHandler={() => setFieldValue(name, item.label)}
+								/>
+							)}
+						/>
+					</View>
 				</Screen>
 			</Modal>
 		</>
@@ -69,6 +74,7 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.light,
 		borderRadius: 25,
 		flexDirection: "row",
+
 		alignItems: "center",
 		width: "100%",
 		padding: 15,

@@ -19,11 +19,11 @@ export default function App() {
 	return (
 		<GestureHandlerRootView style={styles.container}>
 			{/* <Welcome /> */}
-			<AppCard
+			{/* <AppCard
 				title="Chair"
 				subtitle="$100"
 				source={require("./app/assets/chair.jpg")}
-			/>
+			/> */}
 			{/* <Item /> */}
 			{/* <ListingDetails /> */}
 			{/* <Messages /> */}
@@ -41,7 +41,7 @@ export default function App() {
 			{/* <AppPicker icon="email" placeholder="Email" /> */}
 			{/* <Login /> */}
 			{/* <Register /> */}
-			{/* <EditListing /> */}
+			<EditListing />
 		</GestureHandlerRootView>
 	);
 }

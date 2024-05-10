@@ -7,13 +7,13 @@ import defaultStyles from "../../config/styles";
 
 export default function AppInputText({ icon, ...otherProps }) {
 	return (
-		<View style={styles.container}>
+		<View style={{ ...styles.container, width: otherProps.width || "100%" }}>
 			{icon && (
 				<MaterialCommunityIcons name={icon} size={20} color={colors.medium} />
 			)}
 			<TextInput
 				style={{
-					flex: 1,
+					width: "100%",
 					marginLeft: 10,
 					...defaultStyles.text,
 				}}

@@ -13,10 +13,13 @@ const validationSchema = Yup.object().shape({
 });
 
 const categories = [
-	{ id: 1, label: "Clothing" },
-	{ id: 2, label: "Furniture" },
-	{ id: 3, label: "Office Supplies" },
-	{ id: 4, label: "Automotive" },
+	{ id: 1, label: "Furniture", color: "#fc5c65", name: "floor-lamp" },
+	{ id: 2, label: "Office Supplies", color: "#fd9644", name: "car" },
+	{ id: 3, label: "Cameras", color: "#fed330", name: "camera" },
+	{ id: 4, label: "Games", color: "#26de81", name: "cards" },
+	{ id: 5, label: "Clothing", color: "#2bcbba", name: "shoe-heel" },
+	{ id: 6, label: "Sports", color: "#45aaf2", name: "basketball" },
+	{ id: 7, label: "Movies and Music", color: "#4b7bec", name: "headphones" },
 ];
 
 export default function EditListing() {
@@ -47,11 +50,13 @@ export default function EditListing() {
 						autoCapitalize="none"
 						autoCorrect={false}
 						textContentType="name"
+						width="40%"
 					/>
 					<AppPicker
 						placeholder="Category"
 						data={categories}
 						name={"category"}
+						width="60%"
 					/>
 					<AppFormComponent
 						name="password"
