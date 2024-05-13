@@ -7,7 +7,7 @@ import { AppFormComponent, AppForm, AppPicker } from "../components/Forms";
 
 const validationSchema = Yup.object().shape({
 	name: Yup.string().required().label("Name"),
-	price: Yup.string().required().label("Email"),
+	price: Yup.string().required().label("Price"),
 	category: Yup.string().required().min(1).label("Category"),
 	description: Yup.string().required().min(1).label("Description"),
 });
@@ -47,9 +47,8 @@ export default function EditListing() {
 					<AppFormComponent
 						name="price"
 						icon="currency-usd"
-						autoCapitalize="none"
 						autoCorrect={false}
-						textContentType="name"
+						textContentType=""
 						width="40%"
 					/>
 					<AppPicker

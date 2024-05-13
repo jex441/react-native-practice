@@ -1,6 +1,7 @@
-import { View, Text, StyleSheet, Switch } from "react-native";
+import { StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useState } from "react";
+
 import Welcome from "./app/screens/WelcomeScreen";
 import Item from "./app/screens/ItemScreen";
 import AppCard from "./app/components/AppCard";
@@ -14,11 +15,12 @@ import AppPicker from "./app/components/Forms/AppPicker";
 import Login from "./app/screens/Login";
 import Register from "./app/screens/Register";
 import EditListing from "./app/screens/EditListing";
+
 export default function App() {
 	const [isNew, setIsNew] = useState(false);
 	return (
 		<GestureHandlerRootView style={styles.container}>
-			{/* <Welcome /> */}
+			<Welcome />
 			{/* <AppCard
 				title="Chair"
 				subtitle="$100"
@@ -41,7 +43,7 @@ export default function App() {
 			{/* <AppPicker icon="email" placeholder="Email" /> */}
 			{/* <Login /> */}
 			{/* <Register /> */}
-			<EditListing />
+			{/* <EditListing /> */}
 		</GestureHandlerRootView>
 	);
 }
