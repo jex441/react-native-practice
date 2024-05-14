@@ -1,12 +1,18 @@
 import React from "react";
+import { useState } from "react";
 import { StyleSheet, Image } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../components/Screen";
-import { AppFormComponent, AppForm, AppPicker } from "../components/Forms";
+import {
+	AppFormComponent,
+	AppForm,
+	AppPicker,
+	FormImagePicker,
+} from "../components/Forms";
 
 const validationSchema = Yup.object().shape({
-	name: Yup.string().required().label("Name"),
+	title: Yup.string().required().label("Name"),
 	price: Yup.string().required().label("Price"),
 	category: Yup.string().required().min(1).label("Category"),
 	description: Yup.string().required().min(1).label("Description"),
@@ -23,48 +29,48 @@ const categories = [
 ];
 
 export default function EditListing() {
+	const [permissions, setPermissions] = useState(false);
+	const [imageUris, setImageUris] = useState([]);
+
+	const addImage = (newUri) => {
+		setImageUris([...imageUris, newUri]);
+	};
+
+	const removeImage = (uri) => {
+		setImageUris(imageUris.filter((imageUri) => imageUri !== uri));
+	};
 	return (
 		<>
 			<Screen>
 				<AppForm
 					title="Post"
 					initialValues={{
+						images: [],
 						title: "",
 						price: "",
 						category: "",
 						description: "",
 					}}
-					onSubmit={(values) => console.log(values)}
+					onSubmit={(values) => console.log("submit:", values)}
 					validationSchema={validationSchema}
 				>
-					<AppFormComponent
-						name="name"
-						icon="account"
-						autoCapitalize="none"
-						autoCorrect={false}
-						textContentType="name"
+					<FormImagePicker
+						name="images"
+						imageUris={imageUris}
+						onAddImage={addImage}
+						onRemoveImage={removeImage}
+						permissions={permissions}
+						setPermissions={setPermissions}
 					/>
-					<AppFormComponent
-						name="price"
-						icon="currency-usd"
-						autoCorrect={false}
-						textContentType=""
-						width="40%"
-					/>
+					<AppFormComponent name="title" autoCapitalize="none" />
+					<AppFormComponent name="price" autoCorrect={false} width="40%" />
 					<AppPicker
 						placeholder="Category"
 						data={categories}
 						name={"category"}
 						width="60%"
 					/>
-					<AppFormComponent
-						name="password"
-						icon="lock"
-						autoCapitalize="none"
-						autoCorrect={false}
-						textContentType="password"
-						secureTextEntry
-					/>
+					<AppFormComponent name="description" autoCorrect={false} />
 				</AppForm>
 			</Screen>
 		</>

@@ -15,7 +15,7 @@ export default function AppFormComponent({ name, ...otherProps }) {
 				// keyboardType="email-address"
 				// textContentType="emailAddress"
 				{...otherProps}
-				placeholder={name}
+				placeholder={name[0].toUpperCase() + name.slice(1)}
 				onBlur={() => setFieldTouched(name)}
 				onChangeText={handleChange(name)}
 			/>

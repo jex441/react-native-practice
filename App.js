@@ -15,12 +15,15 @@ import AppPicker from "./app/components/Forms/AppPicker";
 import Login from "./app/screens/Login";
 import Register from "./app/screens/Register";
 import EditListing from "./app/screens/EditListing";
+import ImageInputList from "./app/components/Forms/ImageInputList";
+import FormImagePicker from "./app/components/Forms/FormImagePicker";
 
 export default function App() {
 	const [isNew, setIsNew] = useState(false);
+
 	return (
 		<GestureHandlerRootView style={styles.container}>
-			<Welcome />
+			{/* <Welcome /> */}
 			{/* <AppCard
 				title="Chair"
 				subtitle="$100"
@@ -43,7 +46,7 @@ export default function App() {
 			{/* <AppPicker icon="email" placeholder="Email" /> */}
 			{/* <Login /> */}
 			{/* <Register /> */}
-			{/* <EditListing /> */}
+			<EditListing />
 		</GestureHandlerRootView>
 	);
 }

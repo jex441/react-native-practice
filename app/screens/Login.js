@@ -18,7 +18,7 @@ export default function Login() {
 				<AppForm
 					title="Login"
 					initialValues={{ email: "", password: "" }}
-					onSubmit={(values) => console.log(values)}
+					onSubmit={(values) => console.log("=>", values)}
 					validationSchema={validationSchema}
 				>
 					<AppFormComponent

@@ -6,7 +6,10 @@ import colors from "../../config/colors";
 
 export default function PickerItem({ item, pressHandler }) {
 	return (
-		<TouchableOpacity style={styles.container} onPress={pressHandler}>
+		<TouchableOpacity
+			style={styles.container}
+			onPress={() => pressHandler(item.label)}
+		>
 			<View style={{ ...styles.badge, backgroundColor: item.color }}>
 				<MaterialCommunityIcons name={item.name} color="white" size={40} />
 			</View>

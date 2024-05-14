@@ -17,6 +17,13 @@ import PickerItem from "./PickerItem";
 export default function AppPicker({ icon, data, name, width }) {
 	const [visible, setVisible] = useState(false);
 	const { setFieldValue, values } = useFormikContext();
+
+	const pressHandler = (val) => {
+		setVisible(false);
+		console.log("val:", val);
+		setFieldValue(name, val);
+	};
+
 	return (
 		<>
 			<TouchableWithoutFeedback onPress={() => setVisible(!visible)}>
@@ -54,10 +61,7 @@ export default function AppPicker({ icon, data, name, width }) {
 							data={data}
 							keyExtractor={(item) => item.id.toString()}
 							renderItem={({ item }) => (
-								<PickerItem
-									item={item}
-									pressHandler={() => setFieldValue(name, item.label)}
-								/>
+								<PickerItem item={item} pressHandler={pressHandler} />
 							)}
 						/>
 					</View>
