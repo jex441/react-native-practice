@@ -12,6 +12,7 @@ import {
 } from "../components/Forms";
 
 const validationSchema = Yup.object().shape({
+	images: Yup.array().required().min(1).label("Images"),
 	title: Yup.string().required().label("Name"),
 	price: Yup.string().required().label("Price"),
 	category: Yup.string().required().min(1).label("Category"),

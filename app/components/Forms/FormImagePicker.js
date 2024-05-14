@@ -14,8 +14,8 @@ function FormImagePicker({
 	setPermissions,
 	permissions,
 }) {
-	const { setFieldValue, values, errors } = useFormikContext();
-
+	const { setFieldValue, touched, errors } = useFormikContext();
+	console.log(errors);
 	useEffect(() => {
 		setFieldValue(name, imageUris);
 	}, [imageUris]);
@@ -30,7 +30,7 @@ function FormImagePicker({
 				permissions={permissions}
 				imageUris={imageUris}
 			/>
-			<ErrorText text={errors[name]} />
+			<ErrorText text={errors[name]} visible={touched[name]} />
 		</>
 	);
 }
