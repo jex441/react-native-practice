@@ -20,7 +20,6 @@ export default function AppPicker({ icon, data, name, width }) {
 
 	const pressHandler = (val) => {
 		setVisible(false);
-		console.log("val:", val);
 		setFieldValue(name, val);
 	};
 
