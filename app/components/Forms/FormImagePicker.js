@@ -15,7 +15,6 @@ function FormImagePicker({
 	permissions,
 }) {
 	const { setFieldValue, touched, errors } = useFormikContext();
-	console.log(errors);
 	useEffect(() => {
 		setFieldValue(name, imageUris);
 	}, [imageUris]);

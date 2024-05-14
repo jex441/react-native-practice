@@ -1,21 +1,13 @@
-import {
-	View,
-	Text,
-	StyleSheet,
-	SafeAreaView,
-	Image,
-	ImageBackground,
-} from "react-native";
+import { Text, StyleSheet, SafeAreaView, Image } from "react-native";
 import AppButton from "../components/AppButton";
-import colors from "../config/colors";
 
-export default function Welcome() {
+export default function Welcome({ navigation }) {
+	console.log(navigation);
 	return (
 		<>
 			<Image
 				style={{
 					position: "absolute",
-					zIndex: "-1",
 					width: "100%",
 					height: "100%",
 				}}
@@ -36,8 +28,15 @@ export default function Welcome() {
 				>
 					Sell what you don't need.
 				</Text>
-				<AppButton title="Login" />
-				<AppButton title="Sign Up" color="secondary" />
+				<AppButton
+					title="Login"
+					pressHandler={() => navigation.navigate("Login")}
+				/>
+				<AppButton
+					title="Sign Up"
+					color="secondary"
+					pressHandler={() => navigation.navigate("Register")}
+				/>
 			</SafeAreaView>
 		</>
 	);

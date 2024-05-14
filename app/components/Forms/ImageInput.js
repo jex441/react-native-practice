@@ -1,11 +1,17 @@
 import React from "react";
-import { View, StyleSheet, Text, Image, Button } from "react-native";
+import {
+	TouchableWithoutFeedback,
+	View,
+	StyleSheet,
+	Text,
+	Image,
+	Button,
+} from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useFormikContext } from "formik";
 
 import colors from "../../config/colors";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 export default function ImageInput({
 	uri,
@@ -22,7 +28,10 @@ export default function ImageInput({
 			if (granted) setPermissions(true);
 		}
 
-		const result = await ImagePicker.launchImageLibraryAsync();
+		const result = await ImagePicker.launchImageLibraryAsync({
+			mediaTypes: ImagePicker.MediaTypeOptions.Images,
+			quality: 0.5,
+		});
 		if (!result.assets[0].uri) return;
 		onAddImage(result.assets[0].uri);
 	};

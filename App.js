@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useState } from "react";
-
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Welcome from "./app/screens/WelcomeScreen";
-import Item from "./app/screens/ItemScreen";
+import ItemScreen from "./app/screens/ItemScreen";
 import AppCard from "./app/components/AppCard";
 import ListingDetails from "./app/screens/ListingDetails";
 import Messages from "./app/screens/Messages";
@@ -20,34 +21,43 @@ import FormImagePicker from "./app/components/Forms/FormImagePicker";
 
 export default function App() {
 	const [isNew, setIsNew] = useState(false);
+	const Stack = createStackNavigator();
+	const isLoggedIn = true;
+
+	const Tab = createBottomTabNavigator();
+	const TabNavigator = () => {
+		return (
+			<Tab.Navigator>
+				<Tab.Screen name="Home" component={Listings} />
+				<Tab.Screen name="Account" component={Account} />
+				<Tab.Screen name="Add" component={EditListing} />
+			</Tab.Navigator>
+		);
+	};
+
+	const StackNavigator = () => (
+		<Stack.Navigator>
+			{isLoggedIn ? (
+				<>
+					<Stack.Screen name="Home" component={Listings} />
+					<Stack.Screen name="Login" component={Login} />
+					<Stack.Screen name="Register" component={Register} />
+				</>
+			) : (
+				<>
+					<Stack.Screen name="Welcome" component={Welcome} />
+					<Stack.Screen name="Login" component={Login} />
+					<Stack.Screen name="Register" component={Register} />
+				</>
+			)}
+		</Stack.Navigator>
+	);
 
 	return (
-		<GestureHandlerRootView style={styles.container}>
-			{/* <Welcome /> */}
-			{/* <AppCard
-				title="Chair"
-				subtitle="$100"
-				source={require("./app/assets/chair.jpg")}
-			/> */}
-			{/* <Item /> */}
-			{/* <ListingDetails /> */}
-			{/* <Messages /> */}
-			{/* <Account /> */}
-			{/* <Listings /> */}
-			{/* <AppInputText icon="email" placeholder="Email" /> */}
-			{/* <Screen>
-				<Switch
-					value={isNew}
-					onValueChange={(newValue) => {
-						setIsNew(newValue);
-					}}
-				/>
-			</Screen> */}
-			{/* <AppPicker icon="email" placeholder="Email" /> */}
-			{/* <Login /> */}
-			{/* <Register /> */}
-			<EditListing />
-		</GestureHandlerRootView>
+		<NavigationContainer>
+			{/* <StackNavigator /> */}
+			<TabNavigator />
+		</NavigationContainer>
 	);
 }
 

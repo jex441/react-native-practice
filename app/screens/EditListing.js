@@ -1,7 +1,8 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StyleSheet, Image } from "react-native";
 import * as Yup from "yup";
+import * as Location from "expo-location";
 
 import Screen from "../components/Screen";
 import {
@@ -32,6 +33,7 @@ const categories = [
 export default function EditListing() {
 	const [permissions, setPermissions] = useState(false);
 	const [imageUris, setImageUris] = useState([]);
+	const [location, setLocation] = useState(null);
 
 	const addImage = (newUri) => {
 		setImageUris([...imageUris, newUri]);
@@ -40,6 +42,19 @@ export default function EditListing() {
 	const removeImage = (uri) => {
 		setImageUris(imageUris.filter((imageUri) => imageUri !== uri));
 	};
+
+	useEffect(() => {
+		(async () => {
+			let { status } = await Location.requestForegroundPermissionsAsync();
+			if (status !== "granted") {
+				setErrorMsg("Permission to access location was denied");
+				return;
+			}
+			let location = await Location.getCurrentPositionAsync({});
+			setLocation(location);
+		})();
+	}, []);
+
 	return (
 		<>
 			<Screen>
@@ -51,6 +66,7 @@ export default function EditListing() {
 						price: "",
 						category: "",
 						description: "",
+						location: location,
 					}}
 					onSubmit={(values) => console.log("submit:", values)}
 					validationSchema={validationSchema}

@@ -8,6 +8,7 @@ import {
 import { Swipeable } from "react-native-gesture-handler";
 import colors from "../config/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function AppListItem({
 	title,
@@ -18,45 +19,46 @@ export default function AppListItem({
 	chevrons = false,
 }) {
 	return (
-		<Swipeable renderRightActions={renderRightActions}>
-			<TouchableHighlight onPress={pressHandler} underlayColor={colors.light}>
-				<View style={styles.card}>
-					<View style={{ flexDirection: "row" }}>
-						<Image
-							style={{
-								width: 70,
-								height: 70,
-								borderRadius: 35,
-							}}
-							source={source}
-						/>
-						<View style={styles.text}>
-							<Text style={styles.title} numberOfLines={1}>
-								{title}
-							</Text>
-							<Text style={styles.subtitle} numberOfLines={2}>
-								{subtitle}
-							</Text>
-						</View>
-					</View>
-					{chevrons && (
-						<View>
-							<MaterialCommunityIcons
-								name="chevron-right"
-								size={20}
-								color={colors.medium}
+		<GestureHandlerRootView>
+			<Swipeable renderRightActions={renderRightActions}>
+				<TouchableHighlight onPress={pressHandler} underlayColor={colors.light}>
+					<View style={styles.card}>
+						<View style={{ flexDirection: "row" }}>
+							<Image
+								style={{
+									width: 70,
+									height: 70,
+									borderRadius: 35,
+								}}
+								source={source}
 							/>
+							<View style={styles.text}>
+								<Text style={styles.title} numberOfLines={1}>
+									{title}
+								</Text>
+								<Text style={styles.subtitle} numberOfLines={2}>
+									{subtitle}
+								</Text>
+							</View>
 						</View>
-					)}
-				</View>
-			</TouchableHighlight>
-		</Swipeable>
+						{chevrons && (
+							<View>
+								<MaterialCommunityIcons
+									name="chevron-right"
+									size={20}
+									color={colors.medium}
+								/>
+							</View>
+						)}
+					</View>
+				</TouchableHighlight>
+			</Swipeable>
+		</GestureHandlerRootView>
 	);
 }
 
 const styles = StyleSheet.create({
 	card: {
-		flex: 1,
 		padding: 10,
 		height: 100,
 		width: "100%",
