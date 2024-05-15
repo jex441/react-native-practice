@@ -5,7 +5,7 @@ import colors from "../config/colors";
 import AppListItem from "../components/AppListItem";
 import Screen from "../components/Screen";
 import LinkItem from "../components/LinkItem";
-export default function Item() {
+export default function Item({ navigation }) {
 	return (
 		<Screen>
 			<AppListItem
@@ -17,8 +17,14 @@ export default function Item() {
 				title="My Messages"
 				source="format-list-bulleted"
 				color={colors.primary}
+				pressHandler={() => navigation.navigate("Messages")}
 			/>
-			<LinkItem title="My Listings" source="email" color={colors.secondary} />
+			<LinkItem
+				title="My Listings"
+				source="email"
+				color={colors.secondary}
+				pressHandler={() => navigation.navigate("MyListings")}
+			/>
 			<View style={{ marginTop: 40 }}>
 				<LinkItem title="Logout" source="logout" color="#ffe66d" />
 			</View>

@@ -8,18 +8,18 @@ import AppCard from "../components/AppCard";
 const initialData = [
 	{
 		id: 1,
-		name: "Red Jacket for sale",
+		title: "Red Jacket for sale",
 		price: "$100",
-		source: "../assets/chair.jpg",
+		source: "https://m.media-amazon.com/images/I/71xTiQ9fjXL._AC_SY741_.jpg",
 	},
 	{
 		id: 2,
-		name: "Red Jacket for sale",
+		title: "Red Jacket for sale",
 		price: "$100",
-		source: "../assets/chair.jpg",
+		source: "https://m.media-amazon.com/images/I/71xTiQ9fjXL._AC_SY741_.jpg",
 	},
 ];
-export default function Listings() {
+export default function Listings({ navigation }) {
 	const [refreshing, setRefreshing] = useState(false);
 	const [data, setData] = useState(initialData);
 	useEffect(() => {
@@ -27,7 +27,7 @@ export default function Listings() {
 			setData([
 				{
 					id: 2,
-					name: "Red Jacket for sale",
+					title: "Red Jacket for sale",
 					price: "$100",
 					source: "../assets/chair.jpg",
 				},
@@ -42,7 +42,13 @@ export default function Listings() {
 				data={data}
 				keyExtractor={(item) => item.id.toString()}
 				renderItem={({ item }) => (
-					<AppCard title={item.name} subtitle={item.price} />
+					<AppCard
+						title={item.title}
+						subtitle={item.price}
+						pressHandler={() =>
+							navigation.navigate("ListingDetails", { item: item })
+						}
+					/>
 				)}
 				refreshing={refreshing}
 				onRefresh={() => {

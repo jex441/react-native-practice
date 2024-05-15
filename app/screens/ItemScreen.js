@@ -3,7 +3,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import colors from "../config/colors";
 
-export default function Item() {
+export default function Item({ navigation, route }) {
 	return (
 		<SafeAreaView style={styles.container}>
 			<View
@@ -17,7 +17,12 @@ export default function Item() {
 				}}
 			>
 				<View>
-					<MaterialCommunityIcons name="close" color="#fff" size={30} />
+					<MaterialCommunityIcons
+						name="close"
+						color="#fff"
+						size={30}
+						onPress={() => navigation.navigate("Home")}
+					/>
 				</View>
 				<View>
 					<MaterialCommunityIcons

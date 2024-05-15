@@ -3,19 +3,25 @@ import { View, Image, Text, StyleSheet } from "react-native";
 
 import colors from "../config/colors";
 import AppListItem from "../components/AppListItem";
-
-export default function ListingDetails({ title, price, source }) {
+import Screen from "../components/Screen";
+export default function ListingDetails({ route }) {
+	const { item } = route.params;
 	return (
-		<View>
-			<Image style={styles.image} source={source} />
-			<Text style={styles.title}>{title}</Text>
-			<Text style={styles.price}>{price}</Text>
+		<Screen>
+			<Image
+				style={styles.image}
+				source={{
+					uri: item.source,
+				}}
+			/>
+			<Text style={styles.title}>{item.title}</Text>
+			<Text style={styles.price}>{item.price}</Text>
 			<AppListItem
 				title={"Jeffrey Wood"}
 				subtitle={"5 items"}
-				source={require("../assets/logo-red.png")}
+				source={require("../assets/profilephoto.jpg")}
 			/>
-		</View>
+		</Screen>
 	);
 }
 const styles = StyleSheet.create({
@@ -25,14 +31,18 @@ const styles = StyleSheet.create({
 	title: {
 		fontSize: 24,
 		fontWeight: 500,
+		margin: 10,
 	},
 	price: {
 		color: colors.secondary,
 		fontWeight: 500,
 		fontSize: 20,
 		marginVertical: 10,
+		margin: 10,
 	},
 	image: {
 		width: "100%",
+		height: 200,
+		objectFit: "cover",
 	},
 });
