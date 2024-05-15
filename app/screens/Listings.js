@@ -1,28 +1,50 @@
-import { View, StyleSheet, SafeAreaView, Image, FlatList } from "react-native";
+import {
+	View,
+	StyleSheet,
+	SafeAreaView,
+	Image,
+	Text,
+	Button,
+	FlatList,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 
 import colors from "../config/colors";
 import Screen from "../components/Screen";
 import AppCard from "../components/AppCard";
-import listings from "../api/listings";
+import listingsApi from "../api/listings";
+import ActivityIndicator from "../components/ActivityIndicator";
+import useApi from "../hooks/useApi";
 
 export default function Listings({ navigation }) {
-	const [refreshing, setRefreshing] = useState(false);
-	const [data, setData] = useState([]);
-
-	const loadListings = async () => {
-		const res = await listings.getListings();
-		setData(res.data);
-	};
+	const {
+		data,
+		refreshing,
+		loading,
+		error,
+		request: loadListings,
+	} = useApi(listingsApi.getListings);
 
 	useEffect(() => {
 		loadListings();
 	}, []);
 
-	useEffect(() => {}, [refreshing]);
+	useEffect(() => {
+		if (refreshing) loadListings();
+	}, [refreshing]);
+
+	if (loading) {
+		return <ActivityIndicator visible={loading} />;
+	}
 
 	return (
 		<Screen>
+			{error && (
+				<>
+					<Text>Error loading listings</Text>
+					<Button title="Retry" onPress={() => loadListings()} />
+				</>
+			)}
 			<FlatList
 				data={data}
 				keyExtractor={(item) => item.id.toString()}
@@ -38,7 +60,7 @@ export default function Listings({ navigation }) {
 				)}
 				refreshing={refreshing}
 				onRefresh={() => {
-					setRefreshing(true);
+					loadListings();
 				}}
 			/>
 		</Screen>

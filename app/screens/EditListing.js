@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { StyleSheet, Image } from "react-native";
+import { StyleSheet } from "react-native";
 import * as Yup from "yup";
 import * as Location from "expo-location";
 
