@@ -11,7 +11,7 @@ export default function ListingDetails({ route }) {
 			<Image
 				style={styles.image}
 				source={{
-					uri: item.source,
+					uri: item.images[0].url,
 				}}
 			/>
 			<Text style={styles.title}>{item.title}</Text>

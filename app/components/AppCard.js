@@ -2,20 +2,15 @@ import { Text, Image, View, TouchableOpacity, StyleSheet } from "react-native";
 
 import colors from "../config/colors";
 
-export default function AppCard({
-	title,
-	subtitle,
-	pressHandler,
-	source = "../assets/chair.jpg",
-}) {
+export default function AppCard({ title, subtitle, pressHandler, source }) {
 	return (
 		<TouchableOpacity onPress={pressHandler} style={styles.card}>
 			<Image
 				style={{
-					width: "100%",
+					width: 450,
 					height: 200,
 				}}
-				source={require("../assets/chair.jpg")}
+				source={{ uri: source }}
 			/>
 			<View style={{ padding: 20 }}>
 				<Text
@@ -48,10 +43,10 @@ const styles = StyleSheet.create({
 	card: {
 		overflow: "hidden",
 		borderRadius: 15,
-		backgroundColor: "#FFF",
+		backgroundColor: "#fff",
 		height: 300,
-		margin: 10,
-		width: "90%",
+		marginVertical: 10,
+		width: "100%",
 		flexDirection: "column",
 		justifyContent: "flex-start",
 		alignItems: "flex-start",

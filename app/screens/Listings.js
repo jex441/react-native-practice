@@ -4,37 +4,22 @@ import React, { useEffect, useState } from "react";
 import colors from "../config/colors";
 import Screen from "../components/Screen";
 import AppCard from "../components/AppCard";
+import listings from "../api/listings";
 
-const initialData = [
-	{
-		id: 1,
-		title: "Red Jacket for sale",
-		price: "$100",
-		source: "https://m.media-amazon.com/images/I/71xTiQ9fjXL._AC_SY741_.jpg",
-	},
-	{
-		id: 2,
-		title: "Red Jacket for sale",
-		price: "$100",
-		source: "https://m.media-amazon.com/images/I/71xTiQ9fjXL._AC_SY741_.jpg",
-	},
-];
 export default function Listings({ navigation }) {
 	const [refreshing, setRefreshing] = useState(false);
-	const [data, setData] = useState(initialData);
+	const [data, setData] = useState([]);
+
+	const loadListings = async () => {
+		const res = await listings.getListings();
+		setData(res.data);
+	};
+
 	useEffect(() => {
-		if (refreshing) {
-			setData([
-				{
-					id: 2,
-					title: "Red Jacket for sale",
-					price: "$100",
-					source: "../assets/chair.jpg",
-				},
-			]);
-		}
-		setRefreshing(false);
-	}, [refreshing]);
+		loadListings();
+	}, []);
+
+	useEffect(() => {}, [refreshing]);
 
 	return (
 		<Screen>
@@ -44,7 +29,8 @@ export default function Listings({ navigation }) {
 				renderItem={({ item }) => (
 					<AppCard
 						title={item.title}
-						subtitle={item.price}
+						subtitle={"$" + item.price}
+						source={item.images[0].url}
 						pressHandler={() =>
 							navigation.navigate("ListingDetails", { item: item })
 						}
@@ -58,13 +44,3 @@ export default function Listings({ navigation }) {
 		</Screen>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		height: "100%",
-		backgroundColor: "#f9f9f9",
-		justifyContent: "",
-		alignItems: "flex-start",
-		width: "100%",
-	},
-});
