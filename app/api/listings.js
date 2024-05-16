@@ -23,7 +23,6 @@ const postListing = async (vals) => {
 			"Content-Type": "multipart/form-data",
 		},
 	});
-	console.log(res);
 	return res;
 };
 

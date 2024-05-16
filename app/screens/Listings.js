@@ -1,15 +1,6 @@
-import {
-	View,
-	StyleSheet,
-	SafeAreaView,
-	Image,
-	Text,
-	Button,
-	FlatList,
-} from "react-native";
-import React, { useEffect, useState } from "react";
+import { Text, Button, FlatList } from "react-native";
+import React, { useEffect } from "react";
 
-import colors from "../config/colors";
 import Screen from "../components/Screen";
 import AppCard from "../components/AppCard";
 import listingsApi from "../api/listings";

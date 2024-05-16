@@ -13,7 +13,6 @@ import {
 } from "../components/Forms";
 
 import listingsApi from "../api/listings";
-import useApi from "../hooks/useApi";
 
 const validationSchema = Yup.object().shape({
 	images: Yup.array().required().min(1).label("Images"),
@@ -37,13 +36,6 @@ export default function EditListing() {
 	const [permissions, setPermissions] = useState(false);
 	const [imageUris, setImageUris] = useState([]);
 	const [location, setLocation] = useState(null);
-	const {
-		data,
-		refreshing,
-		loading,
-		error,
-		request: postListing,
-	} = useApi(listingsApi.postListing);
 
 	const addImage = (newUri) => {
 		setImageUris([...imageUris, newUri]);
@@ -65,14 +57,11 @@ export default function EditListing() {
 		})();
 	}, []);
 
-	const submitHandler = async (vals) => {
-		console.log(vals);
-		await listingsApi.postListing(vals);
+	const submitHandler = async (vals, { resetForm }) => {
+		const result = await listingsApi.postListing(vals);
+		if (!result.ok) alert(`there was an error: ${JSON.stringify(result.data)}`);
+		if (result.ok) resetForm();
 	};
-
-	useEffect(() => {
-		console.log("data?", data);
-	}, [data]);
 
 	return (
 		<>

@@ -3,10 +3,8 @@ import { TouchableOpacity, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import Listings from "../screens/Listings";
 import AccountNavigator from "./AccountNavigator";
 import EditListing from "../screens/EditListing";
-import ItemScreen from "../screens/ItemScreen";
 import FeedNavigator from "./FeedNavigator";
 
 import colors from "../config/colors";
@@ -19,10 +17,11 @@ export default function AppNavigator() {
 			<Tab.Screen
 				name="Home"
 				options={{
+					tabBarLabel: "",
 					tabBarIcon: ({ color, size }) => (
 						<MaterialCommunityIcons
 							name={"home"}
-							size={30}
+							size={40}
 							color={colors.primary}
 						/>
 					),
@@ -42,16 +41,19 @@ export default function AppNavigator() {
 								<View
 									style={{
 										backgroundColor: colors.primary,
-										height: 80,
-										width: 80,
-										borderRadius: 40,
+										height: 70,
+										width: 70,
+										borderRadius: 35,
 										justifyContent: "center",
 										alignItems: "center",
+										position: "absolute",
+										bottom: 15,
+										left: -28,
 									}}
 								>
 									<MaterialCommunityIcons
 										name={"plus-circle"}
-										size={40}
+										size={50}
 										color="white"
 									/>
 								</View>
@@ -63,10 +65,11 @@ export default function AppNavigator() {
 			<Tab.Screen
 				name="Account"
 				options={{
+					tabBarLabel: "",
 					tabBarIcon: ({ color, size }) => (
 						<MaterialCommunityIcons
 							name={"account"}
-							size={30}
+							size={40}
 							color={colors.primary}
 						/>
 					),
