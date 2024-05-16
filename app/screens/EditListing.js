@@ -12,6 +12,9 @@ import {
 	FormImagePicker,
 } from "../components/Forms";
 
+import listingsApi from "../api/listings";
+import useApi from "../hooks/useApi";
+
 const validationSchema = Yup.object().shape({
 	images: Yup.array().required().min(1).label("Images"),
 	title: Yup.string().required().label("Name"),
@@ -34,6 +37,13 @@ export default function EditListing() {
 	const [permissions, setPermissions] = useState(false);
 	const [imageUris, setImageUris] = useState([]);
 	const [location, setLocation] = useState(null);
+	const {
+		data,
+		refreshing,
+		loading,
+		error,
+		request: postListing,
+	} = useApi(listingsApi.postListing);
 
 	const addImage = (newUri) => {
 		setImageUris([...imageUris, newUri]);
@@ -55,6 +65,15 @@ export default function EditListing() {
 		})();
 	}, []);
 
+	const submitHandler = async (vals) => {
+		console.log(vals);
+		await listingsApi.postListing(vals);
+	};
+
+	useEffect(() => {
+		console.log("data?", data);
+	}, [data]);
+
 	return (
 		<>
 			<Screen>
@@ -68,8 +87,8 @@ export default function EditListing() {
 						description: "",
 						location: location,
 					}}
-					onSubmit={(values) => console.log("submit:", values)}
-					validationSchema={validationSchema}
+					onSubmit={submitHandler}
+					// validationSchema={validationSchema}
 				>
 					<FormImagePicker
 						name="images"
